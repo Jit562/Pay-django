@@ -1,0 +1,55 @@
+{% extends 'nav.html' %}
+
+{% block cart %}
+
+<div class="container mt-5">
+    <h2>Cart Items:- </h2>
+                
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>S.N</th>
+          <th>Action</th>
+          <th>Product</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Qty</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for car in cart.cart_item.all  %}
+        <tr>
+          <th scope="row">{{forloop.counter}}</th>
+          <th>
+            <a href="{% url 'cart_item_remove' cartitem_uid=car.uid %}">Del</a>
+          </th> 
+          <td>
+            <img src="/media/{{car.pizza.images}}" style="height:50px; width:80px;" alt="">
+          </td>
+          <td>{{car.pizza.pizza_name}}</td>
+          <td>{{car.pizza.prize}}</td>
+          <td>1</td>
+          <td>{{car.pizza.prize}}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td scope="row"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <b>Grand Total</b>
+                <br>
+                
+               <a href="" class="btn btn-success">Buy-now {{cart.get_cart_total}}</a>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+
+{% endblock cart %}

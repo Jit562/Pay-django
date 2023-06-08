@@ -1,0 +1,33 @@
+{% extends 'nav.html' %}
+
+{% block title %}Order - My Website{% endblock %}
+
+{% block order %}
+
+<div class="container mt-5">
+    <h2>Oredr Details:- </h2>
+                
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>S.N</th>
+          <th>Total</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in orders  %}
+        <tr>
+          <th scope="row">{{forloop.counter}}</th>
+          <td>{{order.get_cart_total}}</td>
+          <td>True</td>
+          <td>{{order.created_at}}</td>
+        </tr>
+        {% endfor %}
+        
+      </tbody>
+    </table>
+  </div>
+  
+
+{% endblock order %}
